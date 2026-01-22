@@ -34,12 +34,24 @@ class Student implements Comparable<Student>{
                 '}';
     }
 
+//  want desc  4.compareTo(3) --> 4(this),3(o) -->as it is required --> o1 comes before o2
+//    --> means (-ve) required --> (3-4) --> o.getGpa() - this.getGpa()
     @Override
     public int compareTo(Student o) {
         return Double.compare(o.getGpa(), this.getGpa());
     }
 }
-
+//----------->>>  NOTE   <<<---------------------------------
+// Comparator:
+// -> Used to define CUSTOM sorting logic
+// -> Has compare(obj1, obj2) method
+// -> Used when we do NOT want to modify the class
+//
+// Comparable:
+// -> Used for NATURAL sorting order
+// -> Has compareTo(obj) method
+// -> Implemented inside the class itself
+// ----------------------------------------------
 
 
 public class Main {
