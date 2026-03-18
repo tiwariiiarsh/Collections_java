@@ -4,6 +4,7 @@ package streams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class IntermediateOperation {
@@ -16,6 +17,10 @@ public class IntermediateOperation {
         List<String> list = Arrays.asList("Akshit", "Ram", "Shyam", "Ghanshyam", "Akshit");
         Stream<String> filteredStream = list.stream().filter(x -> x.startsWith("A"));
         // no filtering at this point
+        List<String> resList = list.stream().filter(x -> x.startsWith("A")
+        ).collect(Collectors.toList()); //now here '.collect(Collectors.toList()' is terminal operation applied to filter out and give answer
+        System.out.println(resList);
+
         long res = list.stream().filter(x -> x.startsWith("A")).count(); //now here count is terminal operation applied to filter out and give answer
         System.out.println(res);
 
@@ -23,9 +28,10 @@ public class IntermediateOperation {
         Stream<String> stringStream = list.stream().map(String::toUpperCase);
 
         // 3. sorted: it helps to sort elements in the list
-        Stream<String> sortedStream = list.stream().sorted(); //default sorting
-        Stream<String> sortedStreamUsingComparator = list.stream().sorted((a, b) -> a.length() - b.length()); //custom sorting using comparator inside sorted function
-
+        List<String> sortedStream = list.stream().sorted().collect(Collectors.toList()); //default sorting
+        System.out.println(sortedStream);
+        List<String> sortedStreamUsingComparator = list.stream().sorted((a, b) -> a.length() - b.length()).collect(Collectors.toList()); //custom sorting using comparator inside sorted function
+        System.out.println(sortedStreamUsingComparator);
         // 4. distinct: it helps to  remove duplicates from the list
         System.out.println(list.stream().filter(x -> x.startsWith("A")).distinct().count());
 
@@ -61,6 +67,8 @@ public class IntermediateOperation {
                 .map(String::toUpperCase)
                 .toList());
 
+       // sentence -> Arrays.stream(sentence.split(" "))  👉 Har sentence ko words me tod diya + flatten
+//                ["hello", "world", "java", "streams"]
 
     }
 }

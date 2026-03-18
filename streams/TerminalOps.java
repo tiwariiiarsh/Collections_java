@@ -24,10 +24,12 @@ public class TerminalOps {
 
         // 3. reduce(accumulator) : Combines elements to produce a single result
 //        Optional<Integer> optionalInteger = list.stream().reduce((a,b) -> a+b);
-        Optional<Integer> optionalInteger = list.stream().reduce( Integer::sum);
+        List<Integer> ans = Arrays.asList();
+        Optional<Integer> optionalInteger = ans.stream().reduce( Integer::sum);
+        System.out.println(optionalInteger.isPresent());
 
-
-        System.out.println(optionalInteger.get());
+        Optional<Integer> optionalInteger2 = list.stream().reduce( Integer::sum);
+        System.out.println(optionalInteger2.get());
 
         // 4. count
 
@@ -92,6 +94,10 @@ public class TerminalOps {
 
         // stateful & stateless
 
+
+        List<Integer> s = Arrays.asList(1,3,23,22,77,33,11);
+        s.sort((a,c) -> c-a);
+        System.out.println(s);
 
 
     }
